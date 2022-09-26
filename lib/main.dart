@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'card.dart';
+// import 'card.dart';
+import 'movie.dart';
 
 void main() {
   runApp(const MaterialApp(
-    home: MyCard(),
+    debugShowCheckedModeBanner: false,
+    home: Movie(),
   ));
 }

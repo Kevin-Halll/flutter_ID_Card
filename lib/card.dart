@@ -22,7 +22,7 @@ class MyCard extends StatelessWidget {
             const Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('assets/Kevin_w_gb.png'),
+                backgroundImage: AssetImage('kevin.png'),
               ),
             ),
             Divider(
