@@ -22,7 +22,7 @@ class MyCard extends StatelessWidget {
             const Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: AssetImage('kevin.png'),
+                backgroundImage: AssetImage('ja60ncb.png'),
               ),
             ),
             Divider(
@@ -76,7 +76,8 @@ class MyCard extends StatelessWidget {
                 Text(
                   '(876) 458-7899',
                   style: TextStyle(color: Colors.white, fontSize: 18),
-                )
+                ),
+                Image(image: AssetImage('kevin.png'))
               ],
             ),
           ],
