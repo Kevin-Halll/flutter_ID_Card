@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'clipPaths.dart';
 
 class NcbLogin extends StatefulWidget {
   const NcbLogin({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class NcbLogin extends StatefulWidget {
 
 class _NcbLoginState extends State<NcbLogin> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _password_Hidden = true;
 
   @override
   Widget build(BuildContext context) {
@@ -23,16 +25,82 @@ class _NcbLoginState extends State<NcbLogin> {
             width: MediaQuery.of(context).size.width,
             fit: BoxFit.cover,
           ),
+          //////// ELLIPSE IMAGE  ////////
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Container(
+                child: Image.asset('assets/ellipse.png'),
+              ),
+            ],
+          ),
+          //////// FOOTER LINKS ///////
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Activat Your Card  ',
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                    Column(
+                      children: [
+                        // Icon(Icons.currency_exchange_sharp, color: Colors.amber,),
+                        Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                              // top: BorderSide(color: Color(0xFFFFFFFF)),
+                              left: BorderSide(color: Color(0xFFFFFFFF)),
+                              right: BorderSide(color: Color(0xFFFFFFFF)),
+                              // bottom: BorderSide(),
+                            )),
+                            child: Text(
+                              '  Quick Send  ',
+                              style: TextStyle(color: Colors.amberAccent, fontSize: 12),
+                            )),
+                      ],
+                    ),
+                    Text(
+                      '  More...',
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              // Transform.rotate(
+              //   angle: 120,
+              //   child: Container(
+              //     margin: EdgeInsets.fromLTRB(100, 400, 0, 0),
+              //     width: 55,
+              //     height: 50,
+              //     color: Colors.amber,
+              //   ),
+              // ),
               Center(
                 child: Container(
-                  width: 350,
+                  width: 345,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white
-                  ),
+                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white,
+                            Color.fromRGBO(255, 255, 255, 0.95),
+                          ])
+                      // color: Color.fromRGBO(255, 255, 255, 0.91)
+                      ),
+
+                  ////////// SIGN IN FORM  ////////////////////
                   child: Column(
                     children: [
                       Padding(
@@ -41,22 +109,44 @@ class _NcbLoginState extends State<NcbLogin> {
                             key: _formKey,
                             child: Column(
                               children: <Widget>[
+                                SizedBox(height: 5,),
                                 TextField(
                                   decoration: InputDecoration(
-                                    hintText: 'Username',
+                                    contentPadding: EdgeInsets.all(0),
+                                    labelText: 'Username',
+                                    labelStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 14),
                                   ),
                                 ),
                                 SizedBox(
-                                  height: 10,
+                                  height: 25,
                                 ),
+                                //////  PASSWORD INPUT FIELD  ////////
                                 TextField(
+                                  obscureText: _password_Hidden,
                                   decoration: InputDecoration(
-                                    hintText: 'Password',
-                                    // icon: Icon(Icons.remove_red_eye)
-                                  ),
+                                      // filled: true,
+                                      // fillColor: Colors.white,
+                                      contentPadding: EdgeInsets.all(0.0),
+                                      labelText: 'Password',
+                                      labelStyle: TextStyle(
+                                          color: Colors.grey, fontSize: 14),
+                                      suffixIcon: IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              _password_Hidden =
+                                                  !_password_Hidden;
+                                            });
+                                          },
+                                          icon: Icon(
+                                            _password_Hidden
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                            color: Colors.grey[300],
+                                          ))),
                                 ),
                                 SizedBox(
-                                  height: 30,
+                                  height: 25,
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -125,17 +215,19 @@ class _NcbLoginState extends State<NcbLogin> {
                                           padding: MaterialStateProperty.all(
                                               EdgeInsets.fromLTRB(
                                                   20, 10, 20, 10)),
-                                        foregroundColor: MaterialStateProperty.all(Color(0xFF30A7EF)),
-                                        shape: MaterialStateProperty.all(
-                                          RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(30),
-                                            side: BorderSide(color: Colors.lightBlue)
-                                          )
-                                        )
-                                      ),
-                                    )
+                                          foregroundColor:
+                                              MaterialStateProperty.all(
+                                                  Color(0xFF30A7EF)),
+                                          shape: MaterialStateProperty.all(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  side: BorderSide(
+                                                      color:
+                                                          Colors.lightBlue)))),
+                                    ),
                                   ],
-                                )
+                                ),
                               ],
                             )),
                       )
@@ -143,7 +235,9 @@ class _NcbLoginState extends State<NcbLogin> {
                   ),
                 ),
               ),
-              SizedBox(height: 50,),
+              SizedBox(
+                height: 70,
+              ),
             ],
           ),
         ],
